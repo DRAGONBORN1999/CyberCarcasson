@@ -1,15 +1,16 @@
 class Tile:
 
-    def __init__(self, edges, edge_obj, has_monastery=False, has_shield=False, is_placed = False):
-        self.edges = edges # объекты на краях; нужно для проверки возможности установки
-        self.edge_obj = edge_obj # связи между объектами
-        self.has_monastery = has_monastery # маркер наличия монастыря; обыграем потом, это сложно
-        self.has_shield = has_shield # Маркер наличия щита; удваивает очки за клетку
+    def __init__(self, edges, edge_obj, view,  has_monastery=False, has_shield=False, is_placed=False):
+        self.edges = edges  # объекты на краях; нужно для проверки возможности установки
+        self.edge_obj = edge_obj  # связи между объектами
+        self.has_monastery = has_monastery  # маркер наличия монастыря; обыграем потом, это сложно
+        self.has_shield = has_shield  # Маркер наличия щита; удваивает очки за клетку
+        self.view = view #Отображение карточки (пока текстовое)
         self.miples = {"E": "",
                        "S": "",
-                       "W": "", # Маркер занятости объектов
+                       "W": "",  # Маркер занятости объектов
                        "N": ""}
-        self.is_placed = is_placed # маркер установки на поле; блокирует некоторые функции
+        self.is_placed = is_placed  # маркер установки на поле; блокирует некоторые функции
 
 
     def rotate(self): # переворот тайла
@@ -36,6 +37,9 @@ class Tile:
                     elif j == 'W':
                         new_obj += 'N'
                 self.edge_obj[i] = new_obj
+            self.view = [[self.view[2][0], self.view[1][0], self.view[0][0]],
+                        [self.view[2][1], self.view[1][1], self.view[0][1]],
+                        [self.view[2][2], self.view[1][2], self.view[0][2]]]
             return self
 
         else:
@@ -71,6 +75,7 @@ class Tile:
     def check(self): # проверка характеристик тайла (функция разработчика)
         print(self.edges)
         print(self.miples)
+        print(*self.view)
         print(self.edge_obj)
         print(self.has_monastery)
         print(self.has_shield)
@@ -78,11 +83,38 @@ class Tile:
         return self
 
 
+    def is_connect(self, other_tile, edge): # проверяет, можно ли присоединить к ней другую карточку с определённой стороны
+        check = self.edges[edge]
+        if edge == "E":
+            if check == other_tile.edges["W"]:
+                return True
+        elif edge == "S":
+            if check == other_tile.edges["N"]:
+                return True
+        elif edge == "W":
+            if check == other_tile.edges["E"]:
+                return True
+        elif edge == "N":
+            if check == other_tile.edges["S"]:
+                return True
+        else:
+            print("Error")
+        return False
 
 
+    def tile_view(self): # Визуализация карточки
+        print(*self.view[0])
+        print(*self.view[1])
+        print(*self.view[2])
+
+
+
+#Тест для разработчиков
+'''
 test_edges = {"E": "road", "S": "city", "W": "road", "N": "field"}
 test_edge_obj = ["EW", "N", "S"]
-test = Tile(test_edges, test_edge_obj, False, False)
+test_view = [["F", "F", "F"], ["R", "R", "R"], ["F", "C", "F"]]
+test = Tile(test_edges, test_edge_obj, test_view,False, False)
 
 test.check()
 test.rotate()
@@ -92,7 +124,7 @@ test.set_to_board()
 test.check()
 test.set_to_board()
 test.check()
-
+'''
 
 
 
@@ -102,36 +134,37 @@ test.check()
 
 class Board:
     def __init__(self): # создание доски с начальной клеткой посередине
-        start_tile = Tile({"E": "road", "S": "city", "W": "road", "N": "field"}, ["E", "N", "S", "W"], False, False)
-        self.board = []
-        for i in range(9):
-            a = []
-            for j in range(9):
-                a.append(Tile({"E": "none", "S": "none", "W": "none", "N": "none"}, ["E", "N", "S", "W"], False, False))
-            self.board.append(a)
-        self.board[4][4] = start_tile
+        start_tile = Tile({"E": "road", "S": "city", "W": "road", "N": "field"}, ["E", "N", "S", "W"], [['.', '.', '.'], ['R', 'R', 'R'], ['.', 'C', '.']],False, False)
+        self.xmin = 0
+        self.xmax = 0
+        self.ymin = 0
+        self.ymax = 0 #Размеры поля
+        self.board = dict()
+        self.board[(0, 0)] = start_tile
         self.monasteries = [] # заготовка для подсчета очков за монастыри
 
 
 
-    def place(self, tile, x, y):
-        neighbours = {"E": "none", "S": "none", "W": "none", "N": "none"}
-        if x < 8:
-            neighbours['E'] = self.board[x+1][y].get_edges['W']
-        if x > 0:
-            neighbours['W'] = self.board[x-1][y].get_edges['E']
-        if y < 8:
-            neighbours['S'] = self.board[x][y+1].get_edges['N']
-        if y > 0:
-            neighbours['N'] = self.board[x][y-1].get_edges['S']
-
-        if all([i == 'none' for i in neighbours.values()]):
-            print('bro, choose a place near placed tiles!')
-        elif not all([i == 'none' for i in board[x][y].get_edges()]):
-            print('there is a tile already on this place!')
-        elif all([tile.get_edges[i] == neighbours[i] or neighbours[i] == 'none' for i in ["E", "N", "S", "W"]]):
-            self.board[x][y] = tile
+    def place(self, tile, x, y): #помещение карточки на поле
+        flag = 1
+        if (x, y) in self.board.keys():
+            flag = 0
+        if (x, y - 1) in self.board.keys() and not tile.is_connect(self.board[(x, y - 1)], "S"):
+            flag = 0
+        if (x, y + 1) in self.board.keys() and not tile.is_connect(self.board[(x, y + 1)], "N"):
+            flag = 0
+        if (x - 1, y) in self.board.keys() and not tile.is_connect(self.board[(x - 1, y)], "W"):
+            flag = 0
+        if (x + 1, y) in self.board.keys() and not tile.is_connect(self.board[(x + 1, y)], "E"):
+            flag = 0
+        if flag == 1 and ((x, y - 1) in self.board.keys() or (x, y + 1) in self.board.keys() or (x - 1, y) in self.board.keys() or (x + 1, y) in self.board.keys()):
             tile.set_to_board()
+            self.board[(x, y)] = tile
+            self.xmin = min(self.xmin, x)
+            self.xmax = max(self.xmax, x)
+            self.ymin = min(self.ymin, y)
+            self.ymax = max(self.ymax, y)
+
         else:
             print('you can`t place your tile here')
 
@@ -142,6 +175,31 @@ class Board:
 
     def count_points(self):
         pass # подсчет очков
+
+
+    def print_board(self): # кустарный вывод доски на экран
+        y_coord_size = max(len(str(self.ymax)), len(str(self.ymin)))
+        print(' ' * y_coord_size, end=' ')
+        for x in range(self.xmin, self.xmax + 1): #вывод координат по оси x
+            print(f"{str(x):^5}", end = ' ')
+            if x == self.xmax:
+                print()
+
+        # Вывод клеток поля
+        for y in range(self.ymax, self.ymin - 1, -1):
+            for s in range(3):
+                if s != 1:
+                    print(' ' * y_coord_size, end=' ')
+                else:
+                    print(f"{str(y):^{y_coord_size}}", end=' ') #Вывод координат по оси y
+                for x in range(self.xmin, self.xmax + 1):
+                    if (x, y) not in self.board.keys(): # если там нет карточки
+                        print(' ', ' ', ' ', end=' ')
+                    else: # если там есть карточка
+                        print(*self.board[(x, y)].view[s], end=' ')
+                    if x == self.xmax:
+                        print() #перевод строки
+
 
 
 
