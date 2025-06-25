@@ -2,6 +2,6 @@
 
 from game import Game
 
-carcasson = Game()
-carcasson.play_game()
+carcasson = Game(['player 1', 'player 2'])
+carcasson.mainloop()
 
