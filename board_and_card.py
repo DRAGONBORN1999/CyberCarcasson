@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class Board:
     def __init__(self):  # создание доски с начальной клеткой посередине
         start_tile = Tile({"E": "road", "S": "city", "W": "road", "N": "field"}, ["E", "N", "S", "W"],
@@ -8,7 +11,21 @@ class Board:
         self.ymax = 0  # Размеры поля
         self.board = dict()
         self.board[(0, 0)] = start_tile
-        self.monasteries = []  # заготовка для подсчета очков за монастыри
+        self.miples = []  # заготовка для подсчета очков за монастыри
+        self.used = []
+        self.remv = 1
+
+    def get_board(self):
+        return self.board
+
+    def get_miples(self):
+        return self.miples
+
+    def append_miple(self, name, x, y, edg):
+        self.miples.append((name, x, y, edg))
+
+    def del_miple(self, i):
+        self.miples.pop(self.miples.index(i))
 
     def place(self, tile, x, y):  # помещение карточки на поле
         flag = 1
@@ -36,11 +53,99 @@ class Board:
             return 'you can`t place your tile here'
         return 'OK'
 
-    def count_points_by_monasteries(self):
-        pass  # подсчет очков за монастыри
+    def mipling(self, m):
+        name, x, y, clast = m
+        if clast != 'M':
+            queue = deque()
+            queue.append((x, y, clast))
+            self.remv = 1
+            visited = set()
 
-    def count_points(self):
-        pass  # подсчет очков
+            while queue:
+                cx, cy, current_clast = queue.popleft()
+
+                if (cx, cy, current_clast) in visited:
+                    continue
+                visited.add((cx, cy, current_clast))
+
+                tile = self.board[(cx, cy)]
+                tile.set_miple(current_clast[0], name)
+                self.used.append((cx, cy))
+
+                for i in current_clast:
+                    nx, ny, direction = None, None, None
+                    if i == 'E':
+                        nx, ny, direction = cx + 1, cy, 'W'
+                    elif i == 'W':
+                        nx, ny, direction = cx - 1, cy, 'E'
+                    elif i == 'N':
+                        nx, ny, direction = cx, cy + 1, 'S'
+                    elif i == 'S':
+                        nx, ny, direction = cx, cy - 1, 'N'
+                    elif i == 'M':
+                        continue
+
+                    if (nx, ny) in self.board:
+                        neighbor = self.board[(nx, ny)]
+                        neighbor_miples = neighbor.get_miples()
+                        if not neighbor.is_mipled(direction) or neighbor_miples[direction] == name:
+                            neighbor_clast = neighbor.get_claster(direction)
+                            if (nx, ny, neighbor_clast) not in visited:
+                                queue.append((nx, ny, neighbor_clast))
+                    else:
+                        self.remv = 0
+
+    def remipling(self):
+        self.used = []
+        if self.remv == 0:
+            return False
+        else:
+            return True
+
+    def count_points_by_monasteries(self, names):
+        score = dict()
+        for i in names:
+            score[i] = 0
+        for i in self.miples:
+            name, x, y, clast = i
+            if clast == 'M':
+                if (x + 1, y) in self.board.keys():
+                    score[name] += 1
+                if (x + 1, y - 1) in self.board.keys():
+                    score[name] += 1
+                if (x + 1, y + 1) in self.board.keys():
+                    score[name] += 1
+                if (x, y + 1) in self.board.keys():
+                    score[name] += 1
+                if (x, y - 1) in self.board.keys():
+                    score[name] += 1
+                if (x - 1, y) in self.board.keys():
+                    score[name] += 1
+                if (x - 1, y + 1) in self.board.keys():
+                    score[name] += 1
+                if (x - 1, y - 1) in self.board.keys():
+                    score[name] += 1
+        return score
+
+    def count_points(self, names):
+        score = dict()
+        for i in names:
+            score[i] = 0
+        for i in self.board.keys():
+            for j in self.board[i].get_edge_obj():
+                print(i, j)
+                if self.board[i].get_miples()[j[0]] != '':
+                    if self.board[i].get_edges()[j[0]] == 'city' and self.board[i].is_shield():
+                        score[self.board[i].get_miples()[j[0]]] += 4
+                        print(1)
+                    elif (self.board[i].get_edges()[j[0]] == 'road' and self.board[i].is_shield()) or \
+                            self.board[i].get_edges()[j[0]] == 'city':
+                        score[self.board[i].get_miples()[j[0]]] += 2
+                        print(2)
+                    elif self.board[i].get_edges()[j[0]] == 'road':
+                        score[self.board[i].get_miples()[j[0]]] += 1
+                        print(3)
+        return score
 
     def set_miple(self, player, edge, x, y):
         if (x, y) not in self.board.keys():
@@ -70,10 +175,12 @@ class Board:
                     if (x, y) not in self.board.keys():  # если там нет карточки
                         view += ' ' * 6
                     else:  # если там есть карточка
-                        view += self.board[(x, y)].view[s][0] + ' ' + self.board[(x, y)].view[s][1] + ' ' + self.board[(x, y)].view[s][2] + ' '
+                        view += self.board[(x, y)].view[s][0] + ' ' + self.board[(x, y)].view[s][1] + ' ' + \
+                                self.board[(x, y)].view[s][2] + ' '
                     if x == self.xmax:
-                        view += '\n' # перевод строки
+                        view += '\n'  # перевод строки
         return view
+
 
 class Tile:
 
@@ -86,7 +193,8 @@ class Tile:
         self.miples = {"E": "",
                        "S": "",
                        "W": "",  # Маркер занятости объектов
-                       "N": ""}
+                       "N": "",
+                       "M": ""}
         self.is_placed = is_placed  # маркер установки на поле; блокирует некоторые функции
 
     def rotate(self):  # переворот тайла
@@ -100,6 +208,8 @@ class Tile:
                 new_mip = directions[(directions.index(d) + 1) % 4]
                 new_miples[new_mip] = self.miples[d]
             self.edges = new_edges
+            if 'M' in self.miples.keys():
+                new_miples['M'] = self.miples['M']
             self.miples = new_miples
             for i in range(len(self.edge_obj)):
                 new_obj = ''
@@ -128,14 +238,16 @@ class Tile:
             self.is_placed = True
 
     def set_miple(self, edge, player):  # установка мипла на тот или иной край (объект)
-        if self.miples[edge] != "":  # юзается при подсчете очков и чтобы не миплать уже занятую клетку
-            return ("this object is already mipled!")
-        else:
+        if edge != 'M':
             for i in self.edge_obj:
                 if edge in i:
                     for j in i:
                         self.miples[j] = player
-                    return (i)
+        else:
+            self.miples['M'] = player
+
+    def is_mipled(self, edg):
+        return self.miples[edg] != ''
 
     def get_edge_obj(self):  # запрос связей между объектами; для функции подсчета
         return self.edge_obj
@@ -143,15 +255,19 @@ class Tile:
     def get_edges(self):  # запрос расположения объектов по сторонам; для функции установки на доску
         return self.edges
 
-    def check(self):  # проверка характеристик тайла (функция разработчика)
-        print(self.edges)
-        print(self.miples)
-        print(*self.view)
-        print(self.edge_obj)
-        print(self.has_monastery)
-        print(self.has_shield)
-        print(self.is_placed)
-        return self
+    def get_miples(self):
+        return self.miples
+
+    def get_claster(self, edg):
+        for i in self.edge_obj:
+            if edg in i:
+                return i
+
+    def is_shield(self):
+        return self.has_shield
+
+    def is_monastery(self):
+        return self.has_monastery
 
     def is_connect(self, other_tile,
                    edge):  # проверяет, можно ли присоединить к ней другую карточку с определённой стороны
