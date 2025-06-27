@@ -136,7 +136,6 @@ class Game(tk.Tk):
                 elif self.command_chosen == "Place card":
                     data = self.input_chosen.split()
                     try:
-                        cur_x, cur_y = data[0], data[1]
                         self.board.place(cur_tile, int(data[0]), int(data[1]))
                         if cur_tile.is_placed:
                             break
