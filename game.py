@@ -94,9 +94,11 @@ class Game(tk.Tk):
             self.cur_player_name.insert(1, player.get_name())
             self.cur_player_name.config(state="disabled")
 
+            self.view_board.config(state="normal")
             self.view_board.delete('1.0', tk.END)
 
             self.view_board.insert('1.0', self.board.print_board())
+            self.view_board.config(state="disabled")
 
             cur_tile = None
             if self.used == len(self.tiles):  # ОКОНЧАНИЕ ИГРЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
@@ -183,9 +185,11 @@ class Game(tk.Tk):
                      'Choose set miple and type coordinates (x, y) and a side (N, W, S, E), if you want to set your miple')
             self.system_alarm_update(instr)
             while True:
+                self.view_board.config(state="normal")
                 self.view_board.delete('1.0', tk.END)
 
                 self.view_board.insert('1.0', self.board.print_board())
+                self.view_board.config(state="disabled")
 
                 miples = player.get_miples()
                 self.flag_chosen = 0
