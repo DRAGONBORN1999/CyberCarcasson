@@ -100,13 +100,17 @@ class Game(tk.Tk):
 
             cur_tile = None
             if self.used == len(self.tiles):  # ОКОНЧАНИЕ ИГРЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
+                score = self.board.count_points(self.names)
+                score_m = self.board.count_points_by_monasteries(self.names)
+                for i in score.keys():
+                    score[i] += score_m[i]
                 max_key = max(score, key=score.get)
                 self.system_alarm_update(
                     'End!\n' + 'The winner is ' + max_key + ' with ' + str(score[max_key]) + ' points')
 
             while True:  # Выбираем следующую карточку
                 number_of_tile = random.randrange(0, len(self.tiles))
-                if not self.tiles[number_of_tile].is_placed:
+                if not self.tiles[number_of_tile].is_placed and self.board.can_placed(self.tiles[number_of_tile]):
                     cur_tile = self.tiles[number_of_tile]
                     self.used += 1
                     break
@@ -169,7 +173,6 @@ class Game(tk.Tk):
                     pts_output += '\n'
                 score[i] += score_m[i]
                 pts_output = pts_output + str(i) + ': ' + str(score[i])
-            print(pts_output)
             self.players_points.config(state="normal")
             self.players_points.delete('1.0', tk.END)
             self.players_points.insert('1.0', pts_output)
@@ -214,9 +217,8 @@ class Game(tk.Tk):
                                 self.board.get_board()[(data[0], data[1])].set_miple(data[2], player.get_name())
                                 player.set_miple()
                                 self.board.get_board()[(data[0], data[1])].set_miple_on_view(data[2], player.get_name())
-                                print(
-                                    'Miple successfully placed!')  # ЯРИК, ЭТО СИСТЕМНЫЕ СООБЩЕНИЯ ДЛЯ ОТСЛЕЖИВАНИЯ МИПЛОВ
-                                print(self.board.get_board()[(data[0], data[1])].get_miples())
+                                # print('Miple successfully placed!')  # ЯРИК, ЭТО СИСТЕМНЫЕ СООБЩЕНИЯ ДЛЯ ОТСЛЕЖИВАНИЯ МИПЛОВ
+                                # print(self.board.get_board()[(data[0], data[1])].get_miples())
                                 local_flag = 1
                             elif self.board.get_board()[(data[0], data[1])].get_edges()[data[2]] == 'field':
                                 self.system_alarm_update(
@@ -228,9 +230,8 @@ class Game(tk.Tk):
                                 self.board.get_board()[(data[0], data[1])].set_miple(data[2], player.get_name())
                                 player.set_miple()
                                 self.board.get_board()[(data[0], data[1])].set_miple_on_view(data[2], player.get_name())
-                                print(
-                                    'Miple successfully placed!')  # ЯРИК, ЭТО СИСТЕМНЫЕ СООБЩЕНИЯ ДЛЯ ОТСЛЕЖИВАНИЯ МИПЛОВ
-                                print(self.board.get_board()[(data[0], data[1])].get_miples())
+                                # print('Miple successfully placed!')  # ЯРИК, ЭТО СИСТЕМНЫЕ СООБЩЕНИЯ ДЛЯ ОТСЛЕЖИВАНИЯ МИПЛОВ
+                                # print(self.board.get_board()[(data[0], data[1])].get_miples())
                                 local_flag = 1
                         except ValueError:
                             self.system_alarm_update("V Incorrect input\n" + instr)
@@ -255,7 +256,7 @@ class Game(tk.Tk):
                             j.return_miple()
                             self.board.del_miple(i)
                             self.board.get_board()[(i[1], i[2])].del_miple_from_view(i[3])
-            print(self.board.get_miples())
+            # print(self.board.get_miples())
 
             score = self.board.count_points(self.names)  # ПОДСЧЕТ ОЧКОООООООООООООООООООООООООООООООООООООООВ
             score_m = self.board.count_points_by_monasteries(self.names)
@@ -266,7 +267,7 @@ class Game(tk.Tk):
                     pts_output += '\n'
                 score[i] += score_m[i]
                 pts_output = pts_output + str(i) + ': ' + str(score[i])
-            print(pts_output)
+            # print(pts_output)
             self.players_points.config(state="normal")
             self.players_points.delete('1.0', tk.END)
             self.players_points.insert('1.0', pts_output)

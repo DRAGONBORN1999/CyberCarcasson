@@ -322,3 +322,29 @@ class Board:
                         view += '\n'  # перевод строки
         return view
 
+    def can_placed(self, tile: Tile):
+        flag = 0
+        for y in range(self.ymin - 1, self.ymax + 2):
+            for x in range(self.xmin - 1, self.xmax + 2):
+                for i in range(4):
+                    flag2 = 1
+                    if (x, y) in self.board.keys():
+                        flag2 = 0
+                    if (x, y - 1) in self.board.keys() and not tile.is_connect(self.board[(x, y - 1)], "S"):
+                        flag2 = 0
+                    if (x, y + 1) in self.board.keys() and not tile.is_connect(self.board[(x, y + 1)], "N"):
+                        flag2 = 0
+                    if (x - 1, y) in self.board.keys() and not tile.is_connect(self.board[(x - 1, y)], "W"):
+                        flag2 = 0
+                    if (x + 1, y) in self.board.keys() and not tile.is_connect(self.board[(x + 1, y)], "E"):
+                        flag2 = 0
+                    if flag2 == 1 and ((x, y - 1) in self.board.keys() or (x, y + 1) in self.board.keys() or (x - 1,
+                         y) in self.board.keys() or (x + 1, y) in self.board.keys()):
+                        flag = 1
+                        break
+                    tile.rotate()
+                for j in range(i, 4):
+                    tile.rotate()
+                if flag == 1:
+                    return True
+        return False
