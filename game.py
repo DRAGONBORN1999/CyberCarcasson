@@ -11,7 +11,7 @@ class Game(tk.Tk):
     def __init__(self, players):  # Создание игры
         super().__init__()
         self.geometry("800x700")
-        self.title("THE BEST CYBERCARCASSON GAME") # название окна
+        self.title("THE BEST CYBERCARCASSON GAME")  # название окна
         self.board = Board()
         self.names = players
         self.players = [Player(name) for name in players]
@@ -23,7 +23,7 @@ class Game(tk.Tk):
         self.view_board = scrolledtext.ScrolledText(self, width="60", height="20")
         self.view_board.pack(fill='both')
 
-        self.xscrollbar = tk.Scrollbar(self, orient="horizontal") # Вериткальная полоса прокрутки
+        self.xscrollbar = tk.Scrollbar(self, orient="horizontal")  # Вериткальная полоса прокрутки
         self.view_board.config(xscrollcommand=self.xscrollbar.set)
         self.xscrollbar.pack(fill="x")
 
@@ -45,7 +45,7 @@ class Game(tk.Tk):
         self.do_something = tk.Button(self, text="Do this!", width=10, height=2, command=self.action_done)
         self.do_something.pack()
 
-        self.start_this_game = tk.Button(self, text="START THIS GAME!!!\n (or restart it, if you want)", width=20,
+        self.start_this_game = tk.Button(self, text="START THIS GAME!!!", width=20,
                                          height=3, bg='red',
                                          command=lambda: threading.Thread(target=self.start_game, daemon=True).start())
         self.start_this_game.pack(anchor='s', side='bottom', fill='both')
@@ -57,12 +57,12 @@ class Game(tk.Tk):
         self.used = 0
         i = 1
         while True:
-            if f"Card{i}" in database.keys():  # Добавляем загруженную базу с карточками во внутриигровую базу карточек
-                new_tile = Tile(database[f"Card{i}"]["edges"],
-                                database[f"Card{i}"]["edge_obj"],
-                                database[f"Card{i}"]["view"],
-                                database[f"Card{i}"]["has_shield"],
-                                database[f"Card{i}"]["has_monastery"])
+            if f"Card_{i}" in database.keys():  # Добавляем загруженную базу с карточками во внутриигровую базу карточек
+                new_tile = Tile(database[f"Card_{i}"]["edges"],
+                                database[f"Card_{i}"]["edge_obj"],
+                                database[f"Card_{i}"]["view"],
+                                database[f"Card_{i}"]["has_shield"],
+                                database[f"Card_{i}"]["has_monastery"])
                 self.tiles.append(new_tile)
                 i += 1
             else:
@@ -84,6 +84,7 @@ class Game(tk.Tk):
         self.system_alarms.config(state="disabled")
 
     def start_game(self):  # запуск игры
+        self.start_this_game.config(state="disabled")
         while True:
             player = self.players.pop(0)
             self.players.append(player)
@@ -102,6 +103,7 @@ class Game(tk.Tk):
                 max_key = max(score, key=score.get)
                 self.system_alarm_update(
                     'End!\n' + 'The winner is ' + max_key + ' with ' + str(score[max_key]) + ' points')
+
             while True:  # Выбираем следующую карточку
                 number_of_tile = random.randrange(0, len(self.tiles))
                 if not self.tiles[number_of_tile].is_placed:
@@ -112,8 +114,8 @@ class Game(tk.Tk):
                 self.system_alarm_update("Error, can't find a card")
                 break
             instr = (
-                        text_in + "You can add this tile to board:\n" + cur_tile.tile_view() + "Choose rotate if you want to rotate it clockwise\n"
-                        + "Choose 'place card' and type coordinates x y if you want to move it to place (x, y) on the board")
+                    text_in + "You can add this tile to board:\n" + cur_tile.tile_view() + "Choose rotate if you want to rotate it clockwise\n"
+                    + "Choose 'place card' and type coordinates x y if you want to move it to place (x, y) on the board")
             self.system_alarm_update(instr)
             while True:  # установка карточки на поле
                 self.flag_chosen = 0
@@ -136,8 +138,8 @@ class Game(tk.Tk):
                             break
                         else:
                             instr = (
-                                        "You can't place your tile here\n" + "You can add this tile to board:\n" + cur_tile.tile_view() + "Choose rotate if you want to rotate it clockwise\n"
-                                        + "Choose 'place card' and type coordinates x y if you want to move it to place (x, y) on the board")
+                                    "You can't place your tile here\n" + "You can add this tile to board:\n" + cur_tile.tile_view() + "Choose rotate if you want to rotate it clockwise\n"
+                                    + "Choose 'place card' and type coordinates x y if you want to move it to place (x, y) on the board")
                             self.system_alarm_update(instr)
                     except ValueError:
                         self.system_alarm_update("Incorrect input\n" + instr)
@@ -154,12 +156,24 @@ class Game(tk.Tk):
                         if j.is_name(i[0]):
                             j.return_miple()
                             self.board.del_miple(i)
+                            self.board.get_board()[(i[1], i[2])].del_miple_from_view(i[3])
 
             score = self.board.count_points(self.names)  # ПОДСЧЕТ ОЧКОООООООООООООООООООООООООООООООООООООООВ
             score_m = self.board.count_points_by_monasteries(self.names)
             for i in score.keys():
                 score[i] += score_m[i]
-            print(score)
+
+            pts_output = ''  # Вывод очков на экран
+            for i in score.keys():
+                if pts_output != '':
+                    pts_output += '\n'
+                score[i] += score_m[i]
+                pts_output = pts_output + str(i) + ': ' + str(score[i])
+            print(pts_output)
+            self.players_points.config(state="normal")
+            self.players_points.delete('1.0', tk.END)
+            self.players_points.insert('1.0', pts_output)
+            self.players_points.config(state="disabled")
 
             local_flag = 0  # установка мипла
             instr = ('Now you have ' + str(player.get_miples()) + ' miples!\n' +
@@ -199,6 +213,7 @@ class Game(tk.Tk):
                                 self.board.append_miple(player.get_name(), data[0], data[1], data[2])
                                 self.board.get_board()[(data[0], data[1])].set_miple(data[2], player.get_name())
                                 player.set_miple()
+                                self.board.get_board()[(data[0], data[1])].set_miple_on_view(data[2], player.get_name())
                                 print(
                                     'Miple successfully placed!')  # ЯРИК, ЭТО СИСТЕМНЫЕ СООБЩЕНИЯ ДЛЯ ОТСЛЕЖИВАНИЯ МИПЛОВ
                                 print(self.board.get_board()[(data[0], data[1])].get_miples())
@@ -212,6 +227,7 @@ class Game(tk.Tk):
                                                         self.board.get_board()[(data[0], data[1])].get_claster(data[2]))
                                 self.board.get_board()[(data[0], data[1])].set_miple(data[2], player.get_name())
                                 player.set_miple()
+                                self.board.get_board()[(data[0], data[1])].set_miple_on_view(data[2], player.get_name())
                                 print(
                                     'Miple successfully placed!')  # ЯРИК, ЭТО СИСТЕМНЫЕ СООБЩЕНИЯ ДЛЯ ОТСЛЕЖИВАНИЯ МИПЛОВ
                                 print(self.board.get_board()[(data[0], data[1])].get_miples())
@@ -238,12 +254,13 @@ class Game(tk.Tk):
                         if j.is_name(i[0]):
                             j.return_miple()
                             self.board.del_miple(i)
+                            self.board.get_board()[(i[1], i[2])].del_miple_from_view(i[3])
             print(self.board.get_miples())
 
             score = self.board.count_points(self.names)  # ПОДСЧЕТ ОЧКОООООООООООООООООООООООООООООООООООООООВ
             score_m = self.board.count_points_by_monasteries(self.names)
 
-            pts_output = '' # Вывод очков на экран
+            pts_output = ''  # Вывод очков на экран
             for i in score.keys():
                 if pts_output != '':
                     pts_output += '\n'
@@ -254,7 +271,6 @@ class Game(tk.Tk):
             self.players_points.delete('1.0', tk.END)
             self.players_points.insert('1.0', pts_output)
             self.players_points.config(state="disabled")
-
 
 
 class Player:
@@ -279,3 +295,4 @@ class Player:
             return True
         else:
             return False
+

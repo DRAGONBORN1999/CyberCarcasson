@@ -1,506 +1,613 @@
 {
-  "Card1": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "field"},
-    "edge_obj": ["EWN", "S"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", "M", "."], [".", "R", "."]]
+  "Card_1": {
+    "edges": {"N": "city", "E": "field", "S": "field", "W": "field"},
+    "edge_obj": ["N", "EWS"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card2": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "field"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", "M", "."], [".", ".", "."]]
+  "Card_2": {
+    "edges": {"N": "city", "E": "city", "S": "field", "W": "field"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", "C", "C", "C"],
+      [".", ".", "S", "C", "C"],
+      [".", ".", ".", ".", "C"],
+      [".", ".", ".", ".", "C"]
+    ]
   },
-  "Card3": {
-    "edges": {"E": "road", "S": "field", "W": "road", "N": "field"},
-    "edge_obj": ["EW", "N", "S"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", ".", "."]]
+  "Card_3": {
+    "edges": {"N": "city", "E": "city", "S": "field", "W": "field"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", "C", "C", "C"],
+      [".", ".", "S", "C", "C"],
+      [".", ".", ".", ".", "C"],
+      [".", ".", ".", ".", "C"]
+    ]
   },
-  "Card4": {
-    "edges": {"E": "road", "S": "field", "W": "road", "N": "field"},
-    "edge_obj": ["EW", "N", "S"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", ".", "."]]
+  "Card_4": {
+    "edges": {"N": "field", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["NS", "EW"],
+    "has_monastery": true,
+    "has_shield": false,
+    "view": [
+      [".", ".", ".", ".", "."],
+      [".", "R", "R", "R", "."],
+      ["R", "R", "M", "R", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card5": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["SW", "N", "E"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "."], [".", "R", "."]]
+  "Card_5": {
+    "edges": {"N": "road", "E": "road", "S": "road", "W": "road"},
+    "edge_obj": ["E", "W", "N", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      [".", ".", "R", ".", "."],
+      [".", ".", ".", ".", "."],
+      ["R", ".", ".", ".", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card6": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_6": {
+    "edges": {"N": "city", "E": "field", "S": "road", "W": "field"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card7": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_7": {
+    "edges": {"N": "field", "E": "field", "S": "road", "W": "road"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      ["R", "R", ".", ".", "."],
+      [".", "R", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card8": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_8": {
+    "edges": {"N": "road", "E": "field", "S": "road", "W": "field"},
+    "edge_obj": ["NS", "EW"],
+    "has_monastery": true,
+    "has_shield": false,
+    "view": [
+      [".", ".", "R", ".", "."],
+      [".", ".", "R", "R", "."],
+      [".", ".", "M", "R", "."],
+      [".", ".", "R", "R", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card9": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_9": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "field"},
+    "edge_obj": ["N", "ES", "W"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", "R", "R", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card10": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_10": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", ".", ".", "."],
+      ["R", "R", "S", "R", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card11": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_11": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "field"},
+    "edge_obj": ["N", "E", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card12": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_12": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "road"},
+    "edge_obj": ["N", "E", "W", "S"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      ["R", ".", "S", ".", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card13": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_13": {
+    "edges": {"N": "road", "E": "field", "S": "field", "W": "road"},
+    "edge_obj": ["NW", "ES"],
+    "has_monastery": true,
+    "has_shield": false,
+    "view": [
+      [".", ".", "R", ".", "."],
+      [".", "R", "R", ".", "."],
+      ["R", "R", "M", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card14": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_14": {
+    "edges": {"N": "field", "E": "field", "S": "road", "W": "field"},
+    "edge_obj": ["NEW", "S"],
+    "has_monastery": true,
+    "has_shield": false,
+    "view": [
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", "M", ".", "."],
+      [".", ".", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
   },
-  "Card15": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "."], [".", "R", "."]]
+  "Card_15": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      ["R", ".", ".", ".", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card16": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "road"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], ["R", ".", "R"], [".", "R", "."]]
+  "Card_16": {
+    "edges": {"N": "city", "E": "field", "S": "city", "W": "field"},
+    "edge_obj": ["N", "S", "EW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", "C", "C", "C", "."],
+      ["C", "C", "C", "C", "C"]
+    ]
   },
-  "Card17": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["SW", "N", "E"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "."], [".", "R", "."]]
-  },
-  "Card18": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["SW", "N", "E"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "."], [".", "R", "."]]
-  },
-  "Card19": {
-    "edges": {"E": "road", "S": "field", "W": "road", "N": "field"},
-    "edge_obj": ["EW", "N", "S"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "R"], [".", ".", "."]]
-  },
-  "Card20": {
-    "edges": {"E": "road", "S": "field", "W": "road", "N": "field"},
-    "edge_obj": ["EW", "N", "S"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "R"], [".", ".", "."]]
-  },
-  "Card21": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", "M", "."], [".", "R", "."]]
-  },
-  "Card22": {
-    "edges": {"E": "field", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["NS", "E", "W"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", "M", "."], [".", "R", "."]]
-  },
-  "Card23": {
-    "edges": {"E": "road", "S": "field", "W": "field", "N": "road"},
-    "edge_obj": ["EN", "S", "W"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", "M", "R"], [".", ".", "."]]
-  },
-  "Card24": {
-    "edges": {"E": "road", "S": "field", "W": "field", "N": "road"},
-    "edge_obj": ["EN", "S", "W"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", "M", "R"], [".", ".", "."]]
-  },
-  "Card25": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["SW", "N", "E"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "."], [".", "R", "."]]
-  },
-  "Card26": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["SW", "N", "E"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "."], [".", "R", "."]]
-  },
-  "Card27": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "R"], [".", "R", "."]]
-  },
-  "Card28": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", "M", "R"], [".", "R", "."]]
-  },
-  "Card29": {
-    "edges": {"E": "road", "S": "road", "W": "field", "N": "field"},
-    "edge_obj": ["ES", "WN"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", "M", "R"], [".", "R", "."]]
-  },
-  "Card30": {
-    "edges": {"E": "road", "S": "road", "W": "field", "N": "field"},
-    "edge_obj": ["ES", "WN"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", "M", "R"], [".", "R", "."]]
-  },
-  "Card31": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "road"},
+  "Card_17": {
+    "edges": {"N": "city", "E": "field", "S": "city", "W": "city"},
     "edge_obj": ["NSW", "E"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], ["R", ".", "."], [".", "R", "."]]
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      ["C", "C", "C", "C", "."],
+      ["C", "C", "S", ".", "."],
+      ["C", "C", "C", "C", "."],
+      ["C", "C", "C", "C", "C"]
+    ]
   },
-  "Card32": {
-    "edges": {"E": "field", "S": "road", "W": "road", "N": "road"},
-    "edge_obj": ["NSW", "E"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], ["R", ".", "."], [".", "R", "."]]
-  },
-  "Card33": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "road"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], ["R", ".", "R"], [".", "R", "."]]
-  },
-  "Card34": {
-    "edges": {"E": "field", "S": "field", "W": "road", "N": "road"},
-    "edge_obj": ["WN", "ES"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], ["R", ".", "."], [".", ".", "."]]
-  },
-  "Card35": {
-    "edges": {"E": "field", "S": "field", "W": "road", "N": "road"},
-    "edge_obj": ["WN", "ES"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], ["R", ".", "."], [".", ".", "."]]
-  },
-  "Card36": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", "R", "."]]
-  },
-  "Card37": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", "R", "."]]
-  },
-  "Card38": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", "R", "."]]
-  },
-  "Card39": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", "R", "."]]
-  },
-  "Card40": {
-    "edges": {"E": "road", "S": "road", "W": "road", "N": "field"},
-    "edge_obj": ["ESW", "N"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["R", ".", "R"], [".", "R", "."]]
-  },
-  "Card41": {
-    "edges": {"E": "road", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["ENS", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "R"], [".", "R", "."]]
-  },
-  "Card42": {
-    "edges": {"E": "road", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["ENS", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "R"], [".", "R", "."]]
-  },
-  "Card43": {
-    "edges": {"E": "road", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["ENS", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "R"], [".", "R", "."]]
-  },
-  "Card44": {
-    "edges": {"E": "road", "S": "road", "W": "field", "N": "road"},
-    "edge_obj": ["ENS", "W"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "R", "."], [".", ".", "R"], [".", "R", "."]]
-  },
-  "Card45": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
-    "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
-  },
-  "Card46": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
-    "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
-  },
-  "Card47": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
-    "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
-  },
-  "Card48": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
-    "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
-  },
-  "Card49": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
-    "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
-  },
-  "Card50": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
-    "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
-  },
-  "Card51": {
-    "edges": {"E": "field", "S": "city", "W": "field", "N": "field"},
-    "edge_obj": ["S", "NEW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "."], [".", "C", "."]]
-  },
-  "Card52": {
-    "edges": {"E": "field", "S": "city", "W": "field", "N": "field"},
-    "edge_obj": ["S", "NEW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "."], [".", "C", "."]]
-  },
-  "Card53": {
-    "edges": {"E": "field", "S": "city", "W": "field", "N": "field"},
-    "edge_obj": ["S", "NEW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "."], [".", "C", "."]]
-  },
-  "Card54": {
-    "edges": {"E": "field", "S": "city", "W": "field", "N": "field"},
-    "edge_obj": ["S", "NEW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "."], [".", "C", "."]]
-  },
-  "Card55": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "field"},
-    "edge_obj": ["W", "ENS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["C", ".", "."], [".", ".", "."]]
-  },
-  "Card56": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "field"},
-    "edge_obj": ["W", "ENS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["C", ".", "."], [".", ".", "."]]
-  },
-  "Card57": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "field"},
-    "edge_obj": ["W", "ENS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["C", ".", "."], [".", ".", "."]]
-  },
-  "Card58": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "field"},
-    "edge_obj": ["W", "ENS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], ["C", ".", "."], [".", ".", "."]]
-  },
-  "Card59": {
-    "edges": {"E": "city", "S": "field", "W": "field", "N": "field"},
-    "edge_obj": ["E", "NSW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "C"], [".", ".", "."]]
-  },
-  "Card60": {
-    "edges": {"E": "city", "S": "field", "W": "field", "N": "field"},
-    "edge_obj": ["E", "NSW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "C"], [".", ".", "."]]
-  },
-  "Card61": {
-    "edges": {"E": "city", "S": "field", "W": "field", "N": "field"},
-    "edge_obj": ["E", "NSW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "C"], [".", ".", "."]]
-  },
-  "Card62": {
-    "edges": {"E": "city", "S": "field", "W": "field", "N": "field"},
-    "edge_obj": ["E", "NSW"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", ".", "C"], [".", ".", "."]]
-  },
-  "Card63": {
-    "edges": {"E": "city", "S": "city", "W": "field", "N": "field"},
-    "edge_obj": ["ES", "NW"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", ".", "."], [".", ".", "C"], [".", "C", "."]]
-  },
-  "Card64": {
-    "edges": {"E": "city", "S": "city", "W": "field", "N": "field"},
-    "edge_obj": ["ES", "NW"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", ".", "."], [".", ".", "C"], [".", "C", "."]]
-  },
-  "Card65": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "city"},
+  "Card_18": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "city"},
     "edge_obj": ["NW", "ES"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], ["C", ".", "."], [".", ".", "."]]
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      ["C", "C", "C", ".", "."],
+      ["C", "C", ".", "R", "R"],
+      ["C", ".", "R", "R", "."],
+      ["C", ".", "R", ".", "."]
+    ]
   },
-  "Card66": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "city"},
-    "edge_obj": ["NW", "ES"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], ["C", ".", "."], [".", ".", "."]]
+  "Card_19": {
+    "edges": {"N": "city", "E": "city", "S": "field", "W": "field"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", "C", "C", "C"],
+      [".", ".", "S", "C", "C"],
+      [".", ".", ".", ".", "C"],
+      [".", ".", ".", ".", "C"]
+    ]
   },
-  "Card67": {
-    "edges": {"E": "field", "S": "field", "W": "city", "N": "city"},
-    "edge_obj": ["NW", "ES"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [[".", "C", "."], ["C", ".", "."], [".", ".", "."]]
+  "Card_20": {
+    "edges": {"N": "city", "E": "city", "S": "field", "W": "city"},
+    "edge_obj": ["NWE", "S"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      ["C", "C", "C", "C", "C"],
+      ["C", "C", "S", "C", "C"],
+      ["C", ".", ".", ".", "C"],
+      ["C", ".", ".", ".", "C"]
+    ]
   },
-  "Card68": {
-    "edges": {"E": "city", "S": "city", "W": "city", "N": "city"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [["C", "C", "C"], ["C", ".", "C"], ["C", "C", "C"]]
+  "Card_21": {
+    "edges": {"N": "city", "E": "city", "S": "field", "W": "field"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", "C", "C", "C"],
+      [".", ".", "S", "C", "C"],
+      [".", ".", ".", ".", "C"],
+      [".", ".", ".", ".", "C"]
+    ]
   },
-  "Card69": {
-    "edges": {"E": "city", "S": "city", "W": "city", "N": "city"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [["C", "C", "C"], ["C", ".", "C"], ["C", "C", "C"]]
+  "Card_22": {
+    "edges": {"N": "city", "E": "city", "S": "field", "W": "field"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", "C", "C", "C"],
+      [".", ".", "S", "C", "C"],
+      [".", ".", ".", ".", "C"],
+      [".", ".", ".", ".", "C"]
+    ]
   },
-  "Card70": {
-    "edges": {"E": "city", "S": "city", "W": "city", "N": "city"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "False",
-    "has_shield": "True",
-    "view": [["C", "C", "C"], ["C", ".", "C"], ["C", "C", "C"]]
-  },
-  "Card71": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "city"},
+  "Card_23": {
+    "edges": {"N": "city", "E": "field", "S": "field", "W": "field"},
     "edge_obj": ["N", "EWS"],
-    "has_monastery": "False",
-    "has_shield": "False",
-    "view": [[".", "C", "."], [".", ".", "."], [".", ".", "."]]
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
   },
-  "Card72": {
-    "edges": {"E": "field", "S": "field", "W": "field", "N": "field"},
-    "edge_obj": ["EWNS"],
-    "has_monastery": "True",
-    "has_shield": "False",
-    "view": [[".", ".", "."], [".", "M", "."], [".", ".", "."]]
+  "Card_24": {
+    "edges": {"N": "city", "E": "field", "S": "field", "W": "field"},
+    "edge_obj": ["N", "EWS"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_25": {
+    "edges": {"N": "city", "E": "field", "S": "field", "W": "field"},
+    "edge_obj": ["N", "EWS"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_26": {
+    "edges": {"N": "city", "E": "field", "S": "road", "W": "field"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_27": {
+    "edges": {"N": "city", "E": "field", "S": "road", "W": "field"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_28": {
+    "edges": {"N": "city", "E": "field", "S": "road", "W": "field"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_29": {
+    "edges": {"N": "field", "E": "field", "S": "road", "W": "road"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      ["R", "R", ".", ".", "."],
+      [".", "R", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_30": {
+    "edges": {"N": "field", "E": "field", "S": "road", "W": "road"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      ["R", "R", ".", ".", "."],
+      [".", "R", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_31": {
+    "edges": {"N": "field", "E": "field", "S": "road", "W": "road"},
+    "edge_obj": ["NE", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      ["R", "R", ".", ".", "."],
+      [".", "R", "R", ".", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_32": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "field"},
+    "edge_obj": ["N", "ES", "W"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", "R", "R", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_33": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "field"},
+    "edge_obj": ["N", "ES", "W"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", "R", "R", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_34": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "field"},
+    "edge_obj": ["N", "ES", "W"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", "R", "R", "."],
+      [".", ".", "R", ".", "."]
+    ]
+  },
+  "Card_35": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", ".", ".", "."],
+      ["R", "R", "S", "R", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_36": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", ".", ".", "."],
+      ["R", "R", "S", "R", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_37": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": true,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", ".", ".", ".", "."],
+      ["R", "R", "S", "R", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_38": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "field"},
+    "edge_obj": ["N", "E", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_39": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "field"},
+    "edge_obj": ["N", "E", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_40": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "field"},
+    "edge_obj": ["N", "E", "SW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", "R", "R"],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_41": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      ["R", ".", ".", ".", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_42": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      ["R", ".", ".", ".", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_43": {
+    "edges": {"N": "city", "E": "road", "S": "field", "W": "road"},
+    "edge_obj": ["N", "EW", "S"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      ["R", ".", ".", ".", "R"],
+      [".", "R", "R", "R", "."],
+      [".", ".", ".", ".", "."]
+    ]
+  },
+  "Card_44": {
+    "edges": {"N": "city", "E": "field", "S": "city", "W": "field"},
+    "edge_obj": ["N", "S", "EW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", "C", "C", "C", "."],
+      ["C", "C", "C", "C", "C"]
+    ]
+  },
+  "Card_45": {
+    "edges": {"N": "city", "E": "field", "S": "city", "W": "field"},
+    "edge_obj": ["N", "S", "EW"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      [".", "C", "C", "C", "."],
+      [".", ".", ".", ".", "."],
+      [".", "C", "C", "C", "."],
+      ["C", "C", "C", "C", "C"]
+    ]
+  },
+  "Card_46": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "city"},
+    "edge_obj": ["NW", "ES"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      ["C", "C", "C", ".", "."],
+      ["C", "C", ".", "R", "R"],
+      ["C", ".", "R", "R", "."],
+      ["C", ".", "R", ".", "."]
+    ]
+  },
+  "Card_47": {
+    "edges": {"N": "city", "E": "road", "S": "road", "W": "city"},
+    "edge_obj": ["NW", "ES"],
+    "has_monastery": false,
+    "has_shield": false,
+    "view": [
+      ["C", "C", "C", "C", "C"],
+      ["C", "C", "C", ".", "."],
+      ["C", "C", ".", "R", "R"],
+      ["C", ".", "R", "R", "."],
+      ["C", ".", "R", ".", "."]
+    ]
   }
 }
